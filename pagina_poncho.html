@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Abi mi amor...</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffe4e1;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .dialog-box, .dedication-box {
+      text-align: center;
+      border: 3px solid #ff1493;
+      padding: 50px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #ff69b4;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yes-button {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #yes-button:hover {
+      background-color: #ff1493;
+    }
+
+    #no-button {
+      background-color: #ff6347;
+      color: white;
+      position: relative;
+    }
+
+    #no-button:hover {
+      background-color: #ff4500;
+    }
+
+    #dedication-yes-button {
+      background-color: #ff69b4;
+      color: white;
+      font-size: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #dedication-yes-button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cuadro de preguntas -->
+  <div id="dialog-box" class="dialog-box">
+    <h1 id="question">Amor ¿Estás enojada conmigo?</h1>
+    <div class="buttons">
+      <button id="yes-button" onclick="nextQuestion()">Sí</button>
+      <button id="no-button" onmouseover="moveNoButton()">No</button>
+    </div>
+  </div>
+
+  <!-- Cuadro de dedicación -->
+  <div id="dedication-box" class="dedication-box">
+    <h1>Te daré todas las donas que quieras cielo, solo quiero estar por siempre a tu lado, nunca pienses lo contrario...</h1>
+    <p>Eres el amor de mi vida Abi, jamás pienso dejarte ir cielo, te amito por siempre y quiero vivir toda mi vida a tu lado, lo siento si soy un tonoto, pero este tonoto te ama mucho.</p>
+    <button id="dedication-yes-button" onclick="alert('Te amo, Abita.❤️')">Te amo</button>
+  </div>
+
+  <script>
+    let questionIndex = 0;
+    const questions = [
+      "¿Estas enojada conmigo?",
+      "Si te doy un beso... ¿Seguirías enojada conmigo?",
+      "¿Quieres una dona del perdón mi amor?"
+    ];
+
+    // Mostrar la primera pregunta al cargar la página
+    document.getElementById('dialog-box').style.display = 'block';
+
+    // Función para pasar a la siguiente pregunta
+    function nextQuestion() {
+      questionIndex++;
+      if (questionIndex < questions.length) {
+        document.getElementById("question").textContent = questions[questionIndex];
+      } else {
+        document.getElementById('dialog-box').style.display = 'none'; // Oculta el cuadro de preguntas
+        document.getElementById('dedication-box').style.display = 'block'; // Muestra el cuadro de dedicación
+      }
+    }
+
+    // Función para mover el botón "No"
+    function moveNoButton() {
+      const noButton = document.getElementById("no-button");
+      noButton.style.position = "absolute";
+      noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + "px";
+      noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + "px";
+    }
+  </script>
+</body>
+</html>
